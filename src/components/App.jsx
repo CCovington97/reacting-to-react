@@ -7,7 +7,8 @@ class App extends Component {
         this.state = {
             text: "some string as the value",
             placeholder: "Write something here!",
-            inputVal: ""
+            inputVal: "",
+            hasLoaded: false
         }
     }
 
@@ -16,15 +17,29 @@ class App extends Component {
         console.log(this.state.inputVal)
     }
 
+    toggleLoaded(e) {
+        this.setState({ hasLoaded: !this.state.hasLoaded });
+    }
+
     render() {
-        return (
-            <React.Fragment>
+        if (this.state.hasLoaded) {
+            return (
+                <React.Fragment>
                 <h1>{this.props.name}</h1>
                 <h2>{this.state.text}</h2>
                 <input type="text" onChange={(e) => this.handleInput(e)} name="state-input"
                 placeholder={this.state.placeholder} value={this.state.inputVal}/>
             </React.Fragment>
         )
+    } else {
+        return (
+            <React.Fragment>
+                <h1>Loading......</h1>
+                <input type="button" value="Press button to start!"
+                onClick={(e) => this.toggleLoaded()}/>
+            </React.Fragment>
+            )
+    }
     }
 }
 
