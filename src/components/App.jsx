@@ -12,6 +12,10 @@ class App extends Component {
         }
     }
 
+    // componentDidMount() {
+    //     this.setState({ hasLoaded: !this.state.hasLoaded })
+    // }
+
     handleInput(e) {
         this.setState({ inputVal: e.target.value });
         console.log(this.state.inputVal)
